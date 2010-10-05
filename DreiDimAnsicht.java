@@ -160,8 +160,6 @@ public class DreiDimAnsicht extends JFrame {
 		for (int i = 0; i < stripLengths.length; i++) {
 			summe += stripLengths[i];
 		}
-		System.out.println(summe);
-		System.out.println(feldpunkte.size());
 
 		Point3f[] myCoords = new Point3f[feldpunkte.size()];
 		int k = 0;

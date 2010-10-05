@@ -1,7 +1,3 @@
-// Copyright (c) 2010 Martin Ueding [mu@martin-ueding.de]
-
-package de.martin_ueding.physik.vanAllenGuertel;
-
 import java.awt.Color;
 
 import javax.media.j3d.Appearance;

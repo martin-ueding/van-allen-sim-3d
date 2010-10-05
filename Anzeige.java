@@ -154,8 +154,6 @@ public class Anzeige extends JPanel {
 				g.fillRect(bPunkt.x-2, bPunkt.y-2, 5, 5);
 			}
 		}
-
-		System.out.println("Neues Hintergrundbild für "+projektionsModus);
 	}
 
 	private void genFeldImageLinien() {
@@ -199,7 +197,5 @@ public class Anzeige extends JPanel {
 				g.drawLine(project(aktuell_alt).x, project(aktuell_alt).y, project(aktuell).x, project(aktuell).y);
 			}
 		}
-
-		System.out.println("Neues Hintergrundbild für "+projektionsModus);
 	}
 }
