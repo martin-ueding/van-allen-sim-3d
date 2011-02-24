@@ -1,3 +1,5 @@
+// Copyright (c) 2010 Martin Ueding <dev@martin-ueding.de>
+
 import java.awt.Color;
 
 public class Proton extends Teilchen {

@@ -1,4 +1,4 @@
-// Copyright (c) 2010 Martin Ueding [mu@martin-ueding.de]
+// Copyright (c) 2010 Martin Ueding <dev@martin-ueding.de>
 
 package de.martin_ueding.physik.ebSimulator;
 
