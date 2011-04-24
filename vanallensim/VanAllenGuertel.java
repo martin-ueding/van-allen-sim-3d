@@ -110,7 +110,7 @@ public class VanAllenGuertel {
 	}
 	
 	/**
-	 * Gibt das den Magnetfeldvektor an einem Punkt p zurück
+	 * Gibt das den Magnetfeldvektor an einem Punkt p zurueck
 	 * @param p
 	 * @return
 	 */
