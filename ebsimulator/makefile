@@ -3,8 +3,8 @@
 javafiles = $(wildcard *.java)
 classfiles = $(javafiles:.java=.class)
 
-ebsimulator.jar: $(classfiles) manifest.txt
-	jar -cfm $@ $^
+ebsimulator.jar: manifest.txt $(classfiles)
+	jar -cfm $@ $^ *.class
 
 %.class: %.java
 	javac $^

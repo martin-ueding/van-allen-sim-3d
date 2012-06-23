@@ -1,6 +1,15 @@
-# Copyright (c) 2010 Martin Ueding <dev@martin-ueding.de>
+# Copyright (c) 2010, 2012 Martin Ueding <dev@martin-ueding.de>
 
-.PHONY: magneticbottle.jar
-magneticbottle.jar:
-	javac MagnetischeFlascheSimulator.java
-	jar cfm $@ manifest.txt *.class *.java
+javafiles = $(wildcard *.java)
+classfiles = $(javafiles:.java=.class)
+
+magneticbottle.jar: manifest.txt $(classfiles)
+	jar cfm $@ $^ *.class
+
+%.class: %.java
+	javac $^
+
+.PHONY: clean
+clean:
+	$(RM) *.class *.jar
+	$(RM) *.orig
