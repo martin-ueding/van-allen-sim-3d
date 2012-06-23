@@ -2,5 +2,5 @@
 
 all:
 	make -C ebsimulator
-	make -C magneticbottle-src
+	make -C magneticbottle
 	make -C vanallensim
