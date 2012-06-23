@@ -11,11 +11,17 @@ public class MyKeyListener implements KeyListener {
 	public void keyReleased(KeyEvent e) {
 	}
 
-	// Diese Methode wird aufgerufen, wenn eine Taste auf der Tastatur gedrückt worden ist
+	// Diese Methode wird aufgerufen, wenn eine Taste auf der Tastatur
+	// gedrückt worden ist
 	public void keyTyped(KeyEvent e) {
-		// Wenn der eingegebene Buchstabe "B" ist, dann wird das B-Feld ein oder ausgeschaltet. Der Modus wird auf 0 gesetzt, und die Automatik greift nicht weiter ein.
+		// Wenn der eingegebene Buchstabe "B" ist, dann wird das B-Feld ein
+		// oder ausgeschaltet. Der Modus wird auf 0 gesetzt, und die Automatik
+		// greift nicht weiter ein.
 		if (e.getKeyChar() == 'b') {
-			// bfeld ist entweder "wahr" oder "falsch". Hier wird gesagt, dass bfeld jetzt das Gegenteil von bfeld sein soll, also ist es nach diesem Aufruf "wahr" (also an), wenn es vorher "falsch" (also aus) war, und umgekehrt.
+			// bfeld ist entweder "wahr" oder "falsch". Hier wird gesagt, dass
+			// bfeld jetzt das Gegenteil von bfeld sein soll, also ist es nach
+			// diesem Aufruf "wahr" (also an), wenn es vorher "falsch" (also
+			// aus) war, und umgekehrt.
 			Simulator.bfeld = !Simulator.bfeld;
 			Simulator.mode = 0;
 		}
@@ -25,7 +31,9 @@ public class MyKeyListener implements KeyListener {
 			Simulator.mode = 0;
 		}
 
-		// Drückt man die 1, wird der Modus 1 gestartet. In diesem (und dem anderen) Modus ist das magnetische Feld immer an, daher wird es hier schon eingeschaltet.
+		// Drückt man die 1, wird der Modus 1 gestartet. In diesem (und dem
+		// anderen) Modus ist das magnetische Feld immer an, daher wird es hier
+		// schon eingeschaltet.
 		if (e.getKeyChar() == '1') {
 			Simulator.mode = 1;
 			Simulator.bfeld = true;
@@ -37,7 +45,8 @@ public class MyKeyListener implements KeyListener {
 		}
 
 
-		// Drückt man "r" oder "i", wird das Programm entsprechend zurückgesetzt
+		// Drückt man "r" oder "i", wird das Programm entsprechend
+		// zurückgesetzt
 		if (e.getKeyChar() == 'r')
 			Simulator.init();
 
