@@ -12,9 +12,9 @@ public class MyTimerTask extends TimerTask {
 	// schwŠcher als das B-Feld. Diese Werte kšnnen verŠndert werden,
 	// wenn sich das Teilchen generell schneller bewegen soll oder stŠrker
 	// auf das magnetische Feld reagieren soll
-	final double gammaX=1.0, gammaY=1.0;
-	final double gammaVX = 15.0, gammaVY=15.0;
-	final double gammaE=0.25, gammaB=0.5;
+	final double gammaX = 1.0, gammaY = 1.0;
+	final double gammaVX = 15.0, gammaVY = 15.0;
+	final double gammaE = 0.25, gammaB = 0.5;
 
 	// Damit die Bahnen nicht kantig wirken werden pro Zyklus 10 Punkte
 	// berechnet. Wird dieser Wert erhšht, werden die Kurven noch glatter
@@ -38,7 +38,7 @@ public class MyTimerTask extends TimerTask {
 			// wenn sich das Teilchen nach rechts bewegt.
 			if (Simulator.mode == 1) {
 				Simulator.efeld = Simulator.teilchen[2] >= 0;
-					
+
 			}
 			// Wenn der Modus 2 ist, dann soll das E-Feld auch an und
 			// ausgeschaltet werden, jedoch ist die Regel hier etwas
@@ -46,14 +46,16 @@ public class MyTimerTask extends TimerTask {
 			else if (Simulator.mode == 2) {
 				// Ist das E-Feld schon an, und bewegt sich das Teilchen dann
 				// nach oben, soll das Feld abgeschaltet werden.
-				if (Simulator.efeld && Simulator.teilchen[3] > 0)
+				if (Simulator.efeld && Simulator.teilchen[3] > 0) {
 					Simulator.efeld = false;
+				}
 				// Ist das E-Feld aus, und bewegt sich das Teilchen nach unten,
 				// soll es eingeschaltet werden.
-				else if (!Simulator.efeld && Simulator.teilchen[3] <= 0)
+				else if (!Simulator.efeld && Simulator.teilchen[3] <= 0) {
 					Simulator.efeld = true;
+				}
 			}
-			
+
 			// Ist das E-Feld an (also die Variable efeld = "wahr"), dann soll
 			// auf die X-Geschwindigkeitskomponente des Teilchens ein Betrag
 			// addiert werden.
@@ -66,8 +68,8 @@ public class MyTimerTask extends TimerTask {
 			// die X-Geschwindigkeit einen Teil von der Y-Geschwindigkeit und
 			// zieht von der Y-Geschw. einen Teil von der X-Geschw. ab.
 			if (Simulator.bfeld) {
-				Simulator.teilchen[2] += gammaB*Simulator.teilchen[3]  / iter;
-				Simulator.teilchen[3] += -gammaB*Simulator.teilchen[2]  / iter;
+				Simulator.teilchen[2] += gammaB * Simulator.teilchen[3]  / iter;
+				Simulator.teilchen[3] += -gammaB * Simulator.teilchen[2]  / iter;
 			}
 
 
@@ -75,8 +77,8 @@ public class MyTimerTask extends TimerTask {
 			// Auf die Position wird ein Teil der Geschwindigkeit addiert.
 			// Dabei muss man vom Y-Wert abziehen, weil das Koordinatensystems
 			// eines Computers die Y-Achse nach unten hin positiv hat.
-			Simulator.teilchen[0] += gammaVX*Simulator.teilchen[2]  / iter;
-			Simulator.teilchen[1] += - gammaVY*Simulator.teilchen[3]  / iter;
+			Simulator.teilchen[0] += gammaVX * Simulator.teilchen[2]  / iter;
+			Simulator.teilchen[1] += - gammaVY * Simulator.teilchen[3]  / iter;
 
 			// Je nach dem, welche Felder an sind, wird eine andere Farbe
 			// benutzt

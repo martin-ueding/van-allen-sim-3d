@@ -1,16 +1,16 @@
 /*
  * Copyright (c) 2010, 2012 Martin Ueding <dev@martin-ueding.de>
- * 
+ *
  * This program is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
  * any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
  * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
  * more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License along with
  * this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -27,7 +27,7 @@ import javax.swing.JPanel;
 public class Anzeige extends JPanel {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
@@ -42,15 +42,15 @@ public class Anzeige extends JPanel {
 
 	int mouseX, mouseY;
 
-	public Anzeige (int i) {
+	public Anzeige(int i) {
 		projektionsModus = i;
 
 		addMouseMotionListener(new MouseTracker(this));
 	}
 
-	private Point project (Vektor v) {
+	private Point project(Vektor v) {
 		Point p = new Point();
-		double x=0, y=0;
+		double x = 0, y = 0;
 		if (projektionsModus == 1) {
 			x = v.z;
 			y = v.y;
@@ -64,18 +64,20 @@ public class Anzeige extends JPanel {
 			y = v.y;
 		}
 
-		p.x = (int)(getWidth()/2 + getWidth()*x/5);
-		p.y = (int)(getHeight()/2 + getHeight()*y/5);
+		p.x = (int)(getWidth() / 2 + getWidth() * x / 5);
+		p.y = (int)(getHeight() / 2 + getHeight() * y / 5);
 
 		return p;
 	}
 
-	protected void paintComponent (Graphics h) {
+	protected void paintComponent(Graphics h) {
 		if (getWidth() != wAlt || getHeight() != hAlt) {
-			if (projektionsModus == 3)
+			if (projektionsModus == 3) {
 				genFeldImage();
-			else
+			}
+			else {
 				genFeldImageLinien();
+			}
 		}
 
 
@@ -91,10 +93,10 @@ public class Anzeige extends JPanel {
 
 		g.setColor(Color.WHITE);
 		g.drawOval(
-				project(new Vektor(-VanAllenGuertel.ERDRADIUS, -VanAllenGuertel.ERDRADIUS, -VanAllenGuertel.ERDRADIUS)).x, 
-				project(new Vektor(-VanAllenGuertel.ERDRADIUS, -VanAllenGuertel.ERDRADIUS, -VanAllenGuertel.ERDRADIUS)).y, 
-				project(new Vektor(VanAllenGuertel.ERDRADIUS, VanAllenGuertel.ERDRADIUS, VanAllenGuertel.ERDRADIUS)).x-project(new Vektor(-VanAllenGuertel.ERDRADIUS, -VanAllenGuertel.ERDRADIUS, -VanAllenGuertel.ERDRADIUS)).x, 
-				project(new Vektor(VanAllenGuertel.ERDRADIUS, VanAllenGuertel.ERDRADIUS, VanAllenGuertel.ERDRADIUS)).y-project(new Vektor(-VanAllenGuertel.ERDRADIUS, -VanAllenGuertel.ERDRADIUS, -VanAllenGuertel.ERDRADIUS)).y
+		    project(new Vektor(-VanAllenGuertel.ERDRADIUS, -VanAllenGuertel.ERDRADIUS, -VanAllenGuertel.ERDRADIUS)).x,
+		    project(new Vektor(-VanAllenGuertel.ERDRADIUS, -VanAllenGuertel.ERDRADIUS, -VanAllenGuertel.ERDRADIUS)).y,
+		    project(new Vektor(VanAllenGuertel.ERDRADIUS, VanAllenGuertel.ERDRADIUS, VanAllenGuertel.ERDRADIUS)).x - project(new Vektor(-VanAllenGuertel.ERDRADIUS, -VanAllenGuertel.ERDRADIUS, -VanAllenGuertel.ERDRADIUS)).x,
+		    project(new Vektor(VanAllenGuertel.ERDRADIUS, VanAllenGuertel.ERDRADIUS, VanAllenGuertel.ERDRADIUS)).y - project(new Vektor(-VanAllenGuertel.ERDRADIUS, -VanAllenGuertel.ERDRADIUS, -VanAllenGuertel.ERDRADIUS)).y
 		);
 
 
@@ -103,12 +105,12 @@ public class Anzeige extends JPanel {
 
 			if (t.position.betrag() > VanAllenGuertel.ERDRADIUS) {
 
-				if (Math.abs(t.position.x) < 5.0/2.0 && Math.abs(t.position.y) < 5.0/2.0 && Math.abs(t.position.z) < 5.0/2.0) {
+				if (Math.abs(t.position.x) < 5.0 / 2.0 && Math.abs(t.position.y) < 5.0 / 2.0 && Math.abs(t.position.z) < 5.0 / 2.0) {
 
 					g.setColor(t.farbe);
-					g.fillOval(tPos.x-2, tPos.y-2, 5, 5);
+					g.fillOval(tPos.x - 2, tPos.y - 2, 5, 5);
 					Point tVekEnd = project(t.position.add(t.v));
-					Point tBEnd = project(t.position.add(VanAllenGuertel.bfeld(t.position).kreuzprodukt(t.v).skalarmul(-t.ladung*5)));
+					Point tBEnd = project(t.position.add(VanAllenGuertel.bfeld(t.position).kreuzprodukt(t.v).skalarmul(-t.ladung * 5)));
 
 
 					if (VanAllenGuertel.zeichneVektoren) {
@@ -126,7 +128,7 @@ public class Anzeige extends JPanel {
 		}
 
 		g.setColor(Color.white);
-		g.drawString("Teilchen: "+VanAllenGuertel.teilchen.size(), 10, 20);
+		g.drawString("Teilchen: " + VanAllenGuertel.teilchen.size(), 10, 20);
 
 	}
 
@@ -142,25 +144,25 @@ public class Anzeige extends JPanel {
 		// Feldvektoren zeichnen
 		int gitterabstand = 60;
 		g.setColor(Color.DARK_GRAY);
-		for (int i = 0; i < getWidth(); i+= gitterabstand) {
+		for (int i = 0; i < getWidth(); i += gitterabstand) {
 			for (int j = 0; j < getHeight(); j += gitterabstand) {
 				Vektor aktuell = new Vektor();
 
 				Point bPunkt = null;
 
 				if (projektionsModus == 1) {
-					aktuell.z = 5.0*(2*i-getWidth())/(getWidth())/2;
-					aktuell.y = 5.0*(2*j-getHeight())/(getHeight())/2;
+					aktuell.z = 5.0 * (2 * i - getWidth()) / (getWidth()) / 2;
+					aktuell.y = 5.0 * (2 * j - getHeight()) / (getHeight()) / 2;
 					bPunkt = project(aktuell.add(VanAllenGuertel.bfeld(aktuell).skalarmul(0.1)));
 				}
 				else if (projektionsModus == 2) {
-					aktuell.x = 5.0*(2*i-getWidth())/(getWidth())/2;
-					aktuell.z = 5.0*(2*j-getHeight())/(getHeight())/2;
+					aktuell.x = 5.0 * (2 * i - getWidth()) / (getWidth()) / 2;
+					aktuell.z = 5.0 * (2 * j - getHeight()) / (getHeight()) / 2;
 					bPunkt = project(aktuell.add(VanAllenGuertel.bfeld(aktuell).skalarmul(0.1)));
 				}
 				else if (projektionsModus == 3) {
-					aktuell.x = 5.0*(2*i-getWidth())/(getWidth())/2;
-					aktuell.y = 5.0*(2*j-getHeight())/(getHeight())/2;
+					aktuell.x = 5.0 * (2 * i - getWidth()) / (getWidth()) / 2;
+					aktuell.y = 5.0 * (2 * j - getHeight()) / (getHeight()) / 2;
 					bPunkt = project(aktuell.add(VanAllenGuertel.bfeld(aktuell).skalarmul(2)));
 				}
 
@@ -168,7 +170,7 @@ public class Anzeige extends JPanel {
 
 				//	g.setColor(new Color ((int)(255.0*i/getWidth()), (int)(255.0*j/getHeight()), 255));
 				g.drawLine(i, j, bPunkt.x, bPunkt.y);
-				g.fillRect(bPunkt.x-2, bPunkt.y-2, 5, 5);
+				g.fillRect(bPunkt.x - 2, bPunkt.y - 2, 5, 5);
 			}
 		}
 	}
@@ -196,13 +198,13 @@ public class Anzeige extends JPanel {
 			//				aktuell.z = 0;
 			//				aktuell.y = 5.0*(2*i-getHeight())/(getHeight())/2;
 			//			}
-			//			
+			//
 			//			else if (projektionsModus == 2) {
 			//				aktuell.x = 5.0*(2*i-getWidth())/(getWidth())/2;
 			//				aktuell.z = 5.0*(2*0-getHeight())/(getHeight())/2;
 			//			}
 
-			aktuell = VanAllenGuertel.nordpol.add(new Vektor(0.01*Math.sin(i/anzahlRinge*2*Math.PI), 0, 0.01*Math.cos(i/anzahlRinge*2*Math.PI)));
+			aktuell = VanAllenGuertel.nordpol.add(new Vektor(0.01 * Math.sin(i / anzahlRinge * 2 * Math.PI), 0, 0.01 * Math.cos(i / anzahlRinge * 2 * Math.PI)));
 
 			int iter = 0;
 

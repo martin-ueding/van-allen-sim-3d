@@ -47,15 +47,18 @@ public class MyKeyListener implements KeyListener {
 
 		// Drückt man "r" oder "i", wird das Programm entsprechend
 		// zurückgesetzt
-		if (e.getKeyChar() == 'r')
+		if (e.getKeyChar() == 'r') {
 			Simulator.init();
+		}
 
-		if (e.getKeyChar() == 'i')
+		if (e.getKeyChar() == 'i') {
 			Simulator.init_all();
+		}
 
 		// Ein Druck auf Q beendet das Programm sofort
-		if (e.getKeyChar() == 'q')
+		if (e.getKeyChar() == 'q') {
 			System.exit(0);
+		}
 
 	}
 }

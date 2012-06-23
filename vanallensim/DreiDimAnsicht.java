@@ -1,16 +1,16 @@
 /*
  * Copyright (c) 2010, 2012 Martin Ueding <dev@martin-ueding.de>
- * 
+ *
  * This program is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
  * any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
  * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
  * more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License along with
  * this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -56,33 +56,33 @@ public class DreiDimAnsicht extends JFrame {
 
 		GraphicsConfiguration config = SimpleUniverse.getPreferredConfiguration();
 
-		Canvas3D canvas = new Canvas3D(config); 
+		Canvas3D canvas = new Canvas3D(config);
 
 		SimpleUniverse universe = new SimpleUniverse(canvas);
 
 		add(canvas);
 
-		group = new BranchGroup(); 
+		group = new BranchGroup();
 
 		tgalles = new TransformGroup();
 
-		tgalles.setCapability( TransformGroup.ALLOW_TRANSFORM_WRITE );
-		tgalles.setCapability( TransformGroup.ALLOW_TRANSFORM_READ );
-		tgalles.setCapability( BranchGroup.ALLOW_CHILDREN_EXTEND );
-		tgalles.setCapability( BranchGroup.ALLOW_CHILDREN_READ);
-		tgalles.setCapability( BranchGroup.ALLOW_CHILDREN_WRITE);
+		tgalles.setCapability(TransformGroup.ALLOW_TRANSFORM_WRITE);
+		tgalles.setCapability(TransformGroup.ALLOW_TRANSFORM_READ);
+		tgalles.setCapability(BranchGroup.ALLOW_CHILDREN_EXTEND);
+		tgalles.setCapability(BranchGroup.ALLOW_CHILDREN_READ);
+		tgalles.setCapability(BranchGroup.ALLOW_CHILDREN_WRITE);
 		//		Erde
-		
+
 		Appearance ap = new Appearance();
-//		Color3f col = new Color3f(0.0f, 0.0f, 1.0f); 
-//		ColoringAttributes ca = new ColoringAttributes(col, ColoringAttributes.NICEST); 
+//		Color3f col = new Color3f(0.0f, 0.0f, 1.0f);
+//		ColoringAttributes ca = new ColoringAttributes(col, ColoringAttributes.NICEST);
 //		ap.setColoringAttributes(ca);
 
-	//	TextureLoader loader = new TextureLoader(ClassLoader.getSystemResource("erde.jpg"), "RGB", new Container());
+		//	TextureLoader loader = new TextureLoader(ClassLoader.getSystemResource("erde.jpg"), "RGB", new Container());
 
 //		Texture texture = loader.getTexture();
 
-	//	texture.setBoundaryModeS(Texture.WRAP);
+		//	texture.setBoundaryModeS(Texture.WRAP);
 
 //		texture.setBoundaryModeT(Texture.WRAP);
 //
@@ -90,16 +90,16 @@ public class DreiDimAnsicht extends JFrame {
 
 		int primflags = Primitive.GENERATE_NORMALS +
 
-		   Primitive.GENERATE_TEXTURE_COORDS; 
-		
+		        Primitive.GENERATE_TEXTURE_COORDS;
+
 		TransformGroup erdeGruppe = new TransformGroup();
 		Transform3D erdeTransform = new Transform3D();
-		erdeTransform.setRotation(new AxisAngle4d(1, 0, 0, Math.PI/2));
-		
+		erdeTransform.setRotation(new AxisAngle4d(1, 0, 0, Math.PI / 2));
+
 		erdeGruppe.setTransform(erdeTransform);
-		
+
 		Sphere erde = new Sphere((float)VanAllenGuertel.ERDRADIUS, primflags, ap);
-		
+
 		erdeGruppe.addChild(erde);
 
 
@@ -127,8 +127,8 @@ public class DreiDimAnsicht extends JFrame {
 		Transform3D nordpolKugelTransformation = new Transform3D();;
 		nordpolKugelTransformation.setTranslation(nordpolKugelPosition);
 		Appearance nordpolKugelAppearance = new Appearance();
-		Color3f nordpolKugelHauptfarbe = new Color3f(0.0f, 0.0f, 1.0f); 
-		ColoringAttributes nordpolKugelColoringAttributes = new ColoringAttributes(nordpolKugelHauptfarbe, ColoringAttributes.NICEST); 
+		Color3f nordpolKugelHauptfarbe = new Color3f(0.0f, 0.0f, 1.0f);
+		ColoringAttributes nordpolKugelColoringAttributes = new ColoringAttributes(nordpolKugelHauptfarbe, ColoringAttributes.NICEST);
 		nordpolKugelAppearance.setColoringAttributes(nordpolKugelColoringAttributes);
 
 		nordpolKugelAppearance.setMaterial(new Material(nordpolKugelHauptfarbe, new Color3f(0.0f, 1.0f, 0.0f), nordpolKugelHauptfarbe, new Color3f(1.0f, 1.0f, 1.0f), .70f));
@@ -150,14 +150,14 @@ public class DreiDimAnsicht extends JFrame {
 		int anzahlRinge = 10;
 		int radiusSegmente = 10;
 
-		int[] stripLengths = new int[anzahlRinge*radiusSegmente];
+		int[] stripLengths = new int[anzahlRinge * radiusSegmente];
 
-		for (int i = 0; i < anzahlRinge*radiusSegmente; i++) {
+		for (int i = 0; i < anzahlRinge * radiusSegmente; i++) {
 
 			// Startpunkt bestimmen
 			aktuell = new Vektor();
-			double faktor = Math.sqrt((double)i/anzahlRinge/radiusSegmente)+0.2;
-			Vektor versatz = new Vektor(faktor*Math.sin((i%anzahlRinge)*2*Math.PI/anzahlRinge), faktor*Math.cos((i%anzahlRinge)*2*Math.PI/anzahlRinge), Math.cos((i/anzahlRinge)*2*Math.PI/radiusSegmente));
+			double faktor = Math.sqrt((double)i / anzahlRinge / radiusSegmente) + 0.2;
+			Vektor versatz = new Vektor(faktor * Math.sin((i % anzahlRinge) * 2 * Math.PI / anzahlRinge), faktor * Math.cos((i % anzahlRinge) * 2 * Math.PI / anzahlRinge), Math.cos((i / anzahlRinge) * 2 * Math.PI / radiusSegmente));
 			aktuell = VanAllenGuertel.nordpol.add(versatz.skalarmul(0.01));
 
 			int iter = 0;
@@ -171,7 +171,7 @@ public class DreiDimAnsicht extends JFrame {
 				iter++;
 			}
 
-			stripLengths[i] = iter+1;
+			stripLengths[i] = iter + 1;
 		}
 		int summe = 0;
 		for (int i = 0; i < stripLengths.length; i++) {
@@ -185,19 +185,19 @@ public class DreiDimAnsicht extends JFrame {
 		}
 
 		LineStripArray myLines = new LineStripArray(
-				myCoords.length,
-				GeometryArray.COORDINATES,
-				stripLengths );
-		myLines.setCoordinates( 0, myCoords );
+		    myCoords.length,
+		    GeometryArray.COORDINATES,
+		    stripLengths);
+		myLines.setCoordinates(0, myCoords);
 
 		Appearance ap11 = new Appearance();
-		Color3f col11 = new Color3f(0.2f, 0.2f, 0.1f); 
-		ColoringAttributes ca11 = new ColoringAttributes(col11, ColoringAttributes.NICEST); 
+		Color3f col11 = new Color3f(0.2f, 0.2f, 0.1f);
+		ColoringAttributes ca11 = new ColoringAttributes(col11, ColoringAttributes.NICEST);
 		ap11.setColoringAttributes(ca11);
 
 		ap11.setMaterial(new Material(col11, new Color3f(0.0f, 0.0f, 0.0f), col11, new Color3f(1.0f, 1.0f, 1.0f), .70f));
 
-		Shape3D myShape = new Shape3D( myLines, ap11 );
+		Shape3D myShape = new Shape3D(myLines, ap11);
 
 		myShape.setAppearance(ap11);
 
@@ -210,16 +210,16 @@ public class DreiDimAnsicht extends JFrame {
 		}
 
 		group.addChild(tgalles);
-		
-		
+
+
 		// Sonne
-		Sphere sonneKugel = new Sphere((float)VanAllenGuertel.ERDRADIUS*10);
+		Sphere sonneKugel = new Sphere((float)VanAllenGuertel.ERDRADIUS * 10);
 		Vector3f sonneKugelPosition = new Vector3f(0, -30, 0);
 		Transform3D sonneKugelTransformation = new Transform3D();;
 		sonneKugelTransformation.setTranslation(sonneKugelPosition);
 		Appearance sonneKugelAppearance = new Appearance();
-		Color3f sonneKugelHauptfarbe = new Color3f(0.996f, 0.93f, 0.541f); 
-		ColoringAttributes sonneKugelColoringAttributes = new ColoringAttributes(sonneKugelHauptfarbe, ColoringAttributes.NICEST); 
+		Color3f sonneKugelHauptfarbe = new Color3f(0.996f, 0.93f, 0.541f);
+		ColoringAttributes sonneKugelColoringAttributes = new ColoringAttributes(sonneKugelHauptfarbe, ColoringAttributes.NICEST);
 		sonneKugelAppearance.setColoringAttributes(sonneKugelColoringAttributes);
 
 //		sonneKugelAppearance.setMaterial(new Material(sonneKugelHauptfarbe, new Color3f(1.0f, 1.0f, 1.0f), sonneKugelHauptfarbe, new Color3f(1.0f, 1.0f, 1.0f), .70f));
@@ -230,23 +230,23 @@ public class DreiDimAnsicht extends JFrame {
 		sonneGroup.setTransform(sonneKugelTransformation);
 
 		tgalles.addChild(sonneGroup);
-		
 
-		BoundingSphere bounds = new BoundingSphere( new Point3d(0.0,0.0,0.0), 100.0 );
-		MouseRotate behavior = new MouseRotate( tgalles );
-		tgalles.addChild( behavior );
-		behavior.setSchedulingBounds( bounds );
-		tgalles.setCapability( TransformGroup.ALLOW_TRANSFORM_WRITE );
-		tgalles.setCapability( TransformGroup.ALLOW_TRANSFORM_READ );
+
+		BoundingSphere bounds = new BoundingSphere(new Point3d(0.0, 0.0, 0.0), 100.0);
+		MouseRotate behavior = new MouseRotate(tgalles);
+		tgalles.addChild(behavior);
+		behavior.setSchedulingBounds(bounds);
+		tgalles.setCapability(TransformGroup.ALLOW_TRANSFORM_WRITE);
+		tgalles.setCapability(TransformGroup.ALLOW_TRANSFORM_READ);
 
 
 		MouseZoom behavior2 = new MouseZoom(tgalles);
-		tgalles.addChild( behavior2 );
-		behavior2.setSchedulingBounds( bounds );
-		tgalles.setCapability( TransformGroup.ALLOW_TRANSFORM_WRITE );
-		tgalles.setCapability( TransformGroup.ALLOW_TRANSFORM_READ );
-		
-		
+		tgalles.addChild(behavior2);
+		behavior2.setSchedulingBounds(bounds);
+		tgalles.setCapability(TransformGroup.ALLOW_TRANSFORM_WRITE);
+		tgalles.setCapability(TransformGroup.ALLOW_TRANSFORM_READ);
+
+
 
 
 
