@@ -1,8 +1,8 @@
-# Copyright (c) 2010 Martin Ueding <dev@martin-ueding.de>
+# Copyright (c) 2010, 2012 Martin Ueding <dev@martin-ueding.de>
 
 classpath=/usr/share/java/j3dcore.jar:/usr/share/java/j3dutils.jar:/usr/share/java/vecmath.jar
 
-vanallensim3d.jar: manifest.txt VanAllenGuertel.class
+vanallensim3d.jar: manifest.txt VanAllenGuertel.class makefile
 	jar cfm $@ manifest.txt *.class *.java erde.jpg
 
 VanAllenGuertel.class: *.java

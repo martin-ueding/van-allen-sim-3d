@@ -3,7 +3,7 @@
 javafiles = $(wildcard *.java)
 classfiles = $(javafiles:.java=.class)
 
-magneticbottle.jar: manifest.txt $(classfiles)
+magneticbottle.jar: manifest.txt $(classfiles) $(javafiles) makefile
 	jar cfm $@ $^ *.class
 
 %.class: %.java
