@@ -2,4 +2,3 @@ Manifest-Version: 1.0
 Created-By: 1.6.0 (Sun Microsystems Inc.)
 Main-Class: VanAllenGuertel
 Class-Path: /usr/share/java/j3dcore.jar /usr/share/java/j3dutils.jar /usr/share/java/vecmath.jar
-
