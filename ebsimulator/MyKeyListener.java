@@ -1,6 +1,4 @@
-// Copyright (c) 2010 Martin Ueding <dev@martin-ueding.de>
-
-package de.martin_ueding.physik.ebSimulator;
+// Copyright (c) 2010, 2012 Martin Ueding <dev@martin-ueding.de>
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;

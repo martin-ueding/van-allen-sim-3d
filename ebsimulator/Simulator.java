@@ -1,6 +1,4 @@
-// Copyright (c) 2010 Martin Ueding <dev@martin-ueding.de>
-
-package de.martin_ueding.physik.ebSimulator;
+// Copyright (c) 2010, 2012 Martin Ueding <dev@martin-ueding.de>
 
 // Hier werden die benötigten Klassen importiert, beispielsweise für die Grafikausgabe
 import java.awt.GraphicsDevice;
