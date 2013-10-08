@@ -2,6 +2,7 @@
 # Licensed under The GNU Public License Version 2 (or later)
 
 classpath=/usr/share/java/j3dcore.jar:/usr/share/java/j3dutils.jar:/usr/share/java/vecmath.jar
+javac=javac -encoding UTF-8 -cp $(classpath) -sourcepath .
 
 vanallensim3d.jar: manifest.txt VanAllenGuertel.class makefile photoLicense.txt
 	jar cfm $@ manifest.txt *.class *.java erde.jpg
@@ -13,7 +14,7 @@ install:
 	install -m 644 vanallensim.desktop -t "$(DESTDIR)/usr/share/applications"
 
 VanAllenGuertel.class: *.java
-	javac -cp $(classpath) -sourcepath . VanAllenGuertel.java
+	$(javac) VanAllenGuertel.java
 
 clean:
 	rm -f *.class *.jar

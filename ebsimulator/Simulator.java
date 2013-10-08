@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010, 2012 Martin Ueding <dev@martin-ueding.de>
+ * Copyright ¬© 2010, 2012-2013 Martin Ueding <dev@martin-ueding.de>
  *
  * This program is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the Free
@@ -38,7 +38,7 @@ public class Simulator {
 	static boolean efeld, bfeld;
 
 	// Ist der Modus gleich 0, so werden die Felder nicht automatisch
-	// gesteuert. Modus 1 steuert die Felder so, dass die Lösung im Buch
+	// gesteuert. Modus 1 steuert die Felder so, dass die Lsung im Buch
 	// rauskommt, Modus 2 steuert die Felder so, wie ich es in der Aufgabe
 	// verstanden habe
 	static int mode;
@@ -46,7 +46,7 @@ public class Simulator {
 	// Die ist die Hauptmethode in dem Programm, sie wird aufgerufen, wenn das
 	// Programm gestartet wird
 	public static void main(String[] args) {
-		// Hier wird ein Fenster erzeugt und die Größe festgelegt
+		// Hier wird ein Fenster erzeugt und die Gre festgelegt
 		JFrame f = new JFrame("E-B-Simulator");
 		f.setSize(1000, 500);
 		f.add(anzeige);
@@ -73,21 +73,21 @@ public class Simulator {
 		init_all();
 
 		// Der Timer wird alle 50 ms aufgerufen und bewegt das Teilchen ein
-		// Stück weiter
+		// Stck weiter
 		Timer timer = new Timer();
 		timer.schedule(new MyTimerTask(), 1000, 50);
 
-		// Der KeyListener achtet auf Tastatureingaben und übernimmt die
+		// Der KeyListener achtet auf Tastatureingaben und bernimmt die
 		// Steuerung des Programms
 		f.addKeyListener(new MyKeyListener());
 
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
-	// Diese Funktion setzt einige Werte zurück, jedoch werden die Felder
-	// nicht verändert
+	// Diese Funktion setzt einige Werte zurck, jedoch werden die Felder
+	// nicht verndert
 	static void init() {
-		// Ein neues Bild für die Spuren wird generiert
+		// Ein neues Bild fr die Spuren wird generiert
 		bild = new BufferedImage(Toolkit.getDefaultToolkit().getScreenSize().width, Toolkit.getDefaultToolkit().getScreenSize().height, BufferedImage.TYPE_INT_RGB);
 
 		// Die Liste mit den Teilcheneigenschaften wird erzeugt
@@ -96,7 +96,7 @@ public class Simulator {
 		// Das Teilchen bekommt eine bestimmte Position, und zwar oben in der
 		// Mitte, ein klein wenig unterhalb des Bildschirmrandes (10 Pixel).
 		// Die Geschwindigkeit ist 0, da nichts anderes defininiert worden ist.
-		// In Java ist 0.0 der Standardwert für neue Dezimalzahlen.
+		// In Java ist 0.0 der Standardwert fr neue Dezimalzahlen.
 		teilchen[0] = Toolkit.getDefaultToolkit().getScreenSize().width / 2;
 		teilchen[1] = 10;
 
@@ -104,7 +104,7 @@ public class Simulator {
 	}
 
 	// Diese Funktion hier schaltet beide Felder aus und ruft dann die init()
-	// Funktion auf, die den Rest zurücksetzt
+	// Funktion auf, die den Rest zurcksetzt
 	static void init_all() {
 		efeld = false;
 		bfeld = false;

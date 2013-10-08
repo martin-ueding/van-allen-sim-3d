@@ -4,6 +4,9 @@
 Changelog
 #########
 
+v1.2.1
+    - Fix build encoding
+
 v1.2
     - Add desktop files and ``make install`` targets
 

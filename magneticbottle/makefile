@@ -3,6 +3,7 @@
 
 javafiles = $(wildcard *.java)
 classfiles = $(javafiles:.java=.class)
+javac=javac -encoding UTF-8 -sourcepath .
 
 magneticbottle.jar: manifest.txt $(classfiles) $(javafiles) makefile
 	jar cfm $@ $^ *.class
@@ -14,7 +15,7 @@ install:
 	install -m 644 magneticbottle.desktop -t "$(DESTDIR)/usr/share/applications"
 
 %.class: %.java
-	javac $^
+	$(javac) $^
 
 .PHONY: clean
 clean:

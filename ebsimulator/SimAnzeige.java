@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010, 2012 Martin Ueding <dev@martin-ueding.de>
+ * Copyright ¬© 2010, 2012-2013 Martin Ueding <dev@martin-ueding.de>
  *
  * This program is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the Free
@@ -34,14 +34,14 @@ public class SimAnzeige extends JPanel {
 		final Graphics2D g = (Graphics2D)h;
 		g.setRenderingHints(new RenderingHints(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON));
 
-		// Zuerst wird das Bild mit den Spuren eingefügt
+		// Zuerst wird das Bild mit den Spuren eingefgt
 		g.drawImage(Simulator.bild, null, 0, 0);
 
 
-		// Es wird grüne Farbe ausgewählt ...
+		// Es wird grne Farbe ausgewhlt ...
 		g.setColor(Color.GREEN);
 
-		// ... und ein Kreis ausgefüllt. Dieser stellt das Teilchen dar.
+		// ... und ein Kreis ausgefllt. Dieser stellt das Teilchen dar.
 		g.fillOval((int)Simulator.teilchen[0] - 3, (int)Simulator.teilchen[1] - 3, 7, 7);
 
 

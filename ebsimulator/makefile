@@ -3,6 +3,7 @@
 
 javafiles = $(wildcard *.java)
 classfiles = $(javafiles:.java=.class)
+javac=javac -encoding UTF-8 -sourcepath .
 
 ebsimulator.jar: manifest.txt $(classfiles) $(javafiles) makefile
 	jar -cfm $@ $^ *.class
@@ -14,7 +15,7 @@ install:
 	install -m 644 ebsimulator.desktop -t "$(DESTDIR)/usr/share/applications"
 
 %.class: %.java
-	javac $^
+	$(javac) $^
 
 .PHONY: clean
 clean:
