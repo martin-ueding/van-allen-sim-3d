@@ -4,6 +4,9 @@
 Changelog
 #########
 
+v1.2
+    - Add desktop files and ``make install`` targets
+
 v1.1
     - Add license to files.
     - Add license to makefile.
