@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Magnetic Bottle
+GenericName=Magnetic Bottle Simulator
+Exec=java -jar /usr/share/van-allen-sim-3d/vanallensim3d.jar
+Terminal=false
+Categories=Education;

@@ -7,8 +7,10 @@ vanallensim3d.jar: manifest.txt VanAllenGuertel.class makefile photoLicense.txt
 	jar cfm $@ manifest.txt *.class *.java erde.jpg
 
 install:
-	mkdir -p "$(DESTDIR)/usr/share/van-allen-sim-3d"
-	install -m 644 vanallensim3d.jar "$(DESTDIR)/usr/share/van-allen-sim-3d"
+	install -d "$(DESTDIR)/usr/share/van-allen-sim-3d"
+	install -m 644 vanallensim3d.jar -t "$(DESTDIR)/usr/share/van-allen-sim-3d"
+	install -d "$(DESTDIR)/usr/share/applications"
+	install -m 644 vanallensim.desktop -t "$(DESTDIR)/usr/share/applications"
 
 VanAllenGuertel.class: *.java
 	javac -cp $(classpath) -sourcepath . VanAllenGuertel.java

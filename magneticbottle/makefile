@@ -10,6 +10,8 @@ magneticbottle.jar: manifest.txt $(classfiles) $(javafiles) makefile
 install:
 	mkdir -p "$(DESTDIR)/usr/share/van-allen-sim-3d"
 	install -m 644 magneticbottle.jar "$(DESTDIR)/usr/share/van-allen-sim-3d"
+	install -d "$(DESTDIR)/usr/share/applications"
+	install -m 644 magneticbottle.desktop -t "$(DESTDIR)/usr/share/applications"
 
 %.class: %.java
 	javac $^

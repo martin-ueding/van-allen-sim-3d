@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=E-B-Simulator
+GenericName=Electric-Magnetic-Field Simulator
+Exec=java -jar /usr/share/van-allen-sim-3d/ebsimulator.jar
+Terminal=false
+Categories=Education;

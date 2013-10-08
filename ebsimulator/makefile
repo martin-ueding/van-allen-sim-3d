@@ -10,6 +10,8 @@ ebsimulator.jar: manifest.txt $(classfiles) $(javafiles) makefile
 install:
 	mkdir -p "$(DESTDIR)/usr/share/van-allen-sim-3d"
 	install -m 644 ebsimulator.jar "$(DESTDIR)/usr/share/van-allen-sim-3d"
+	install -d "$(DESTDIR)/usr/share/applications"
+	install -m 644 ebsimulator.desktop -t "$(DESTDIR)/usr/share/applications"
 
 %.class: %.java
 	javac $^
